@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}FASTA Schneider-About{% endblock %}
+
+{% block body %}
+    <div class="container my-4" style="padding-left: 3px;">
+        <div class="mb-5"></div>
+        <h3 class="text-left">How FASTA-Schneider Works?</h3>
+    </div>
+    <div class="container my-4" style="padding-left: 3px;">
+        <p class="text-align">
+        FASTA-Schneider is a tool which slices uploaded FASTA files as per user specifications. <br> It extracts sequences between specified indexed start and end points and applies length filters if provided. The processed FASTA file is made available to be downloaded. 
+        </p>
+    </div>
+    <!--<div class="container my-4">
+        <div class="row">-->
+            <!-- Column for the image -->
+            <!--<div class="d-flex justify-content-center align-items-center">
+                <img src="{{ url_for('static', filename='Input-hz.png') }}" alt="Conservar Finder Workflow" class="img-fluid" style="width: 800px; height: auto;">
+            </div>
+            
+        </div>
+    </div> -->
+    <div class="container my-4" style="padding-left: 3px;">
+        <h3 class="text-left">How to use FASTA-Schneider?</h3>
+    </div>
+    <div class="container my-4" style="padding-left: 3px;">
+        <p class="text-align">
+            1. Upload your FASTA file.<br>
+            2. Specify Start and End positions.<br>
+            3. Input sequence length (optional).<br>
+            4. Check the box to exclude sequences containing missing data ('X') while processing.<br>
+            5. Click on "Upload".<br>
+            6. You can download results in .fasta format.
+        </p>
+       
+    </div>
+    
+{% endblock body %}

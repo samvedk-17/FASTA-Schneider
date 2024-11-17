@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-md-8 d-flex flex-column align-items-center">
+        <h1>FASTA-Schneider</h1>
+        <div class="mb-3"></div>
+        <h5><em>Slice the FASTA sequences as you want</em></h5>
+        <div class="mb-4"></div>
+
+        <!-- File upload -->
+        <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="w-75">
+            <div class="mb-3">
+                <label for="file">Upload your FASTA file: </label>
+                <input type="file" id="file" name="file" accept=".txt,.fasta,.fa" required>
+                {% if error %}
+                    <div class="alert alert-danger mt-2">{{ error }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="start" class="form-label">Start from</label>
+                <input type="text" class="form-control" name="start" id="start">              
+            </div>
+            <div class="mb-3">
+                <label for="end" class="form-label">End to </label>
+                <input type="text" class="form-control" name="end" id="end">
+            </div> 
+
+            <!-- Label for length specification -->
+            <div class="mb-2">
+                <label for="length" class="form-label me-2">Specify Length:</label>
+            </div>
+                    
+            <!-- Radio buttons for length condition -->
+            <div class="mb-3 d-flex justify-content-center">
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="equalto" name="length_condition" value="equal" checked>
+                    <label class="form-check-label" for="equalto">Equal to</label>
+                </div>
+                
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="greaterthan" name="length_condition" value="greater_than_equal">
+                    <label class="form-check-label" for="greaterthan">Greater than or equal to</label>
+                </div>
+            
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="lessthan" name="length_condition" value="less_than_equal">
+                    <label class="form-check-label" for="lessthan">Less than or equal to</label>
+                </div>
+            </div>
+            
+            <!-- Length input -->
+            <div class="mb-3">
+                <input type="number" class="form-control" name="length" id="length" placeholder="Enter length">
+            </div>
+
+            <!-- Filter -->
+            <div class="mb-3">
+                <label for="omit_missing">Omit sequences with missing data (X)</label>
+                <input type="checkbox" id="omit_missing" name="omit_missing">
+            </div>
+
+            <!-- Upload button -->
+            <div class="mb-4">
+                <input type="submit" class="btn btn-outline-primary " value="Upload">
+            </div>
+        </form>    
+    </div>
+</div>
+
+<!-- JavaScript to clear radio button selection on page load -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const radios = document.querySelectorAll('input[name="length_condition"]');
+        radios.forEach(radio => {
+            radio.checked = false;
+        });
+    });
+</script>
+
+{% endblock body %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}FASTA Schneider-Results{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h4>Processing Results</h4>
+    <div class="mb-3"></div>
+    <div class="mb-3">
+        <p><strong>Total sequences before processing:</strong> {{ initial_count }}</p>
+        <p><strong>Total sequences after processing:</strong> {{ final_count }}</p>
+    </div>
+    
+    <div class="mb-5"></div>
+    
+    <h4>Preview of Processed File</h4>
+    <pre style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd;" >
+        {% for line in preview %}
+            {{ line }}
+        {% endfor %}
+    </pre>
+  
+
+    <div class="mb-3">
+        <a href="{{ url_for('download_file', filepath=output_file) }}" class="btn btn-primary">Download Processed File</a>
+    </div>
+</div>
+{% endblock body %}

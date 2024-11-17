@@ -1,5 +1,4 @@
 # FASTA-Schneider
-How FASTA-Schneider Works?
 FASTA-Schneider is a tool which slices uploaded FASTA files as per user specifications.
 It extracts sequences between specified indexed start and end points and applies length filters if provided. The processed FASTA file is made available to be downloaded.
 
